@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VerdeHome | Premium Duurzaam Interieur</title>
+  <meta name="description" content="Interieur dat niet ten koste gaat van de wereld.">
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"></noscript>
@@ -13,12 +14,14 @@
   <script type="module" src="./app.js" defer></script>
   
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #fafafa; overflow-x: hidden; margin: 0; }
-    :not(:defined) { visibility: hidden; opacity: 0; transition: opacity 0.2s ease; }
-    :defined { visibility: visible; opacity: 1; }
+    body { font-family: 'Inter', sans-serif; background-color: #fafafa; margin: 0; overflow-x: hidden; }
     
-    /* Smooth view transitions for supported browsers */
-    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.3s; }
+    /* Prevent layout shift while JS loads */
+    :not(:defined) { visibility: hidden; opacity: 0; }
+    :defined { visibility: visible; opacity: 1; transition: opacity 0.2s ease-in; }
+    
+    /* Smooth CSS view transitions */
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.4s; }
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -32,7 +35,7 @@
       <p class="text-sm">© 2026 VerdeHome. Alle rechten voorbehouden.</p>
       <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-full border border-gray-800">
         <div class="w-2 h-2 rounded-full bg-green-500 animate-[pulse_2s_ease-in-out_infinite]"></div>
-        <span class="text-xs font-mono font-semibold text-gray-300 tracking-wider">FYXO NATIVE SPA</span>
+        <span class="text-xs font-mono font-semibold text-gray-300 tracking-wider">FYXO NATIVE ENGINE</span>
       </div>
     </div>
   </footer>
