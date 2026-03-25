@@ -6,22 +6,24 @@
   <title>VerdeHome | Premium Duurzaam Interieur</title>
   <meta name="description" content="Interieur dat niet ten koste gaat van de wereld.">
   
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
   
   <script src="https://cdn.tailwindcss.com"></script>
-  
   <script type="module" src="./app.js" defer></script>
   
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #fafafa; margin: 0; overflow-x: hidden; }
+    body { font-family: 'Inter', sans-serif; background-color: #fafafa; margin: 0; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     
-    /* Prevent layout shift while JS loads */
+    /* Fyxo Standard: Eliminate layout shift */
     :not(:defined) { visibility: hidden; opacity: 0; }
-    :defined { visibility: visible; opacity: 1; transition: opacity 0.2s ease-in; }
+    :defined { visibility: visible; opacity: 1; transition: opacity 0.3s ease-out; }
     
-    /* Smooth CSS view transitions */
-    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.4s; }
+    /* Premium View Transitions */
+    ::view-transition-old(root) { animation: 300ms cubic-bezier(0.4, 0, 1, 1) both fade-out; }
+    ::view-transition-new(root) { animation: 400ms cubic-bezier(0, 0, 0.2, 1) both fade-in; }
+    @keyframes fade-out { to { opacity: 0; transform: translateY(-10px); } }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } }
   </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -30,17 +32,22 @@
 
   <main id="router-outlet" class="flex-grow"></main>
 
-  <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-900 mt-auto">
+  <footer class="bg-gray-950 text-gray-400 py-16 border-t border-gray-900 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-      <p class="text-sm">© 2026 VerdeHome. Alle rechten voorbehouden.</p>
-      <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-full border border-gray-800">
+      <div class="flex flex-col items-center md:items-start">
+        <span class="text-xl font-bold text-white tracking-tighter mb-2">Verde<span class="text-green-600">Home</span></span>
+        <p class="text-sm">© 2026 Alle rechten voorbehouden.</p>
+      </div>
+      <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-full border border-gray-800 shadow-inner">
         <div class="w-2 h-2 rounded-full bg-green-500 animate-[pulse_2s_ease-in-out_infinite]"></div>
-        <span class="text-xs font-mono font-semibold text-gray-300 tracking-wider">FYXO NATIVE ENGINE</span>
+        <span class="text-xs font-mono font-semibold text-gray-300 tracking-wider">FYXO V2 ARCHITECTURE</span>
       </div>
     </div>
   </footer>
 
   <verde-cart-drawer></verde-cart-drawer>
+  
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
 </body>
 </html>
