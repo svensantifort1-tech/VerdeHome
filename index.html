@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VerdeHome | Premium Duurzaam Interieur</title>
-  <meta name="description" content="Interieur dat niet ten koste gaat van de wereld.">
   
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"></noscript>
@@ -14,28 +13,31 @@
   <script type="module" src="./app.js" defer></script>
   
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #fafafa; overflow-x: hidden; }
-    /* Prevent layout shift (CLS) by hiding custom elements until they upgrade */
-    :not(:defined) { visibility: hidden; opacity: 0; transition: opacity 0.3s ease; }
+    body { font-family: 'Inter', sans-serif; background-color: #fafafa; overflow-x: hidden; margin: 0; }
+    :not(:defined) { visibility: hidden; opacity: 0; transition: opacity 0.2s ease; }
     :defined { visibility: visible; opacity: 1; }
+    
+    /* Smooth view transitions for supported browsers */
+    ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.3s; }
   </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
-  <verde-hero></verde-hero>
-  <verde-grid></verde-grid>
-  <verde-trust target="14582"></verde-trust>
-  <verde-sticky-bar price="€ 899,-" product="Premium Fauteuil"></verde-sticky-bar>
+  <verde-navbar></verde-navbar>
 
-  <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-900">
+  <main id="router-outlet" class="flex-grow"></main>
+
+  <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-900 mt-auto">
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
       <p class="text-sm">© 2026 VerdeHome. Alle rechten voorbehouden.</p>
       <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-full border border-gray-800">
         <div class="w-2 h-2 rounded-full bg-green-500 animate-[pulse_2s_ease-in-out_infinite]"></div>
-        <span class="text-xs font-mono font-semibold text-gray-300 tracking-wider">FYXO 100/100 NATIVE JS</span>
+        <span class="text-xs font-mono font-semibold text-gray-300 tracking-wider">FYXO NATIVE SPA</span>
       </div>
     </div>
   </footer>
+
+  <verde-cart-drawer></verde-cart-drawer>
 
 </body>
 </html>
