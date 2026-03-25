@@ -1,0 +1,30 @@
+---
+// src/components/StickyBuyBar.astro
+---
+<div id="sticky-buy-bar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 transform translate-y-full transition-transform duration-300 z-50 flex justify-between items-center shadow-lg md:hidden" aria-hidden="true">
+  <div class="flex flex-col">
+    <span class="text-sm text-gray-500">Premium Fauteuil</span>
+    <span class="text-lg font-bold text-gray-900">€ 899,-</span>
+  </div>
+  <form action={'/api/addToCart'} method="POST">
+    <input type="hidden" name="productId" value="vh-fauteuil-01" />
+    <button type="submit" class="bg-gray-900 text-white px-6 py-3 rounded font-semibold hover:bg-gray-800 active:scale-95 transition-all">
+      Nu Bestellen
+    </button>
+  </form>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const heroSection = document.getElementById('hero-section');
+    const buyBar = document.getElementById('sticky-buy-bar');
+    if (!heroSection || !buyBar) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      buyBar.classList.toggle('translate-y-full', entry.isIntersecting);
+      buyBar.setAttribute('aria-hidden', entry.isIntersecting ? 'true' : 'false');
+    }, { root: null, threshold: 0 });
+
+    observer.observe(heroSection);
+  });
+</script>
